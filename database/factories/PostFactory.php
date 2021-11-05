@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Person;
 
 class PostFactory extends Factory
 {
@@ -24,7 +25,7 @@ class PostFactory extends Factory
         return [
             'text' => $this->faker->realText(100),
             'likes' => $this->faker->numberBetween(0,15),
-            'person_id' => 1, //this makes all posts by george to stop factory crash, remove later
+            'person_id' => Person::inRandomOrder()->first()->id,
         ];
     }
 }
