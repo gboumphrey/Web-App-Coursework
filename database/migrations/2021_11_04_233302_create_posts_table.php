@@ -17,8 +17,12 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('text');
             $table->integer('likes');
-            $table->timestamps();
+            $table->bigInteger('person_id')->unsigned();
 
+            $table->foreign('person_id')->references('id')->on('people')
+                ->onDelete('cascade')->onUpdate('cascade');
+                
+            $table->timestamps();
         });
     }
 
