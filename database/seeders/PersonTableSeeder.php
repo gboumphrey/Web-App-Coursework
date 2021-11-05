@@ -14,11 +14,12 @@ class PersonTableSeeder extends Seeder
      */
     public function run()
     {
-        //
         $me = new Person;
         $me->name = 'George';
         $me->email = 'george@email.com';
         $me->save();
+
+        $people = Person::factory()->count(4)->create();
 
     }
 }
