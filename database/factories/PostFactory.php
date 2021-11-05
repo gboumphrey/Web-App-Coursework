@@ -24,6 +24,7 @@ class PostFactory extends Factory
         return [
             'text' => $this->faker->realText(100),
             'likes' => $this->faker->numberBetween(0,15),
+            'person_id' => 1, //this makes all posts by george to stop factory crash, remove later
         ];
     }
 }
