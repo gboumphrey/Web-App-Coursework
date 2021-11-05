@@ -25,6 +25,7 @@ class PostFactory extends Factory
         return [
             'text' => $this->faker->realText(100),
             'likes' => $this->faker->numberBetween(0,15),
+            //randomly assign posts to existing people/persons
             'person_id' => Person::inRandomOrder()->first()->id,
         ];
     }
