@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Person;
+use App\Models\User;
 
-class PersonTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,15 @@ class PersonTableSeeder extends Seeder
      */
     public function run()
     {
-        $me = new Person;
+        $me = new User;
         $me->name = 'George';
         $me->email = 'george@email.com';
+        $me->email_verified_at = now();
+        $me->password = 'password';
+        $me->remember_token = 'remembertk';
         $me->save();
 
-        $people = Person::factory()->count(4)->create();
+        $users = User::factory()->count(4)->create();
 
     }
 }

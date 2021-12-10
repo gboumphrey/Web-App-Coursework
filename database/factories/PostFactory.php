@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Person;
+use App\Models\User;
 
 class PostFactory extends Factory
 {
@@ -24,9 +24,8 @@ class PostFactory extends Factory
     {
         return [
             'text' => $this->faker->realText(100),
-            'likes' => $this->faker->numberBetween(0,15),
-            //randomly assign posts to existing people/persons
-            'person_id' => Person::inRandomOrder()->first()->id,
+            //randomly assign posts to existing users
+            'user_id' => User::inRandomOrder()->first()->id,
         ];
     }
 }
