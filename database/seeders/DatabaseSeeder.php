@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
     
         $this->call(GroupTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(UserProfileTableSeeder::class);
         $this->call(PostTableSeeder::class);
+        
         $groups = Group::get();
         User::get()->each(function ($user) use ($groups) {
             $user->groups()->attach(

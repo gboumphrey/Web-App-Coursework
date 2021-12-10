@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\UserProfile;
 
 class UserTableSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class UserTableSeeder extends Seeder
         $me->remember_token = 'remembertk';
         $me->save();
 
-        $users = User::factory()->count(4)->create();
+        $users = User::factory()->count(4)->has(UserProfile::factory())->create();
 
     }
 }
