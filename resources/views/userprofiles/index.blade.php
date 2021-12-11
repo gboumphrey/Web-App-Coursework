@@ -8,7 +8,7 @@
     <h1>Profiles</h1>
     <ul>
         @foreach ($userprofiles as $profile)
-        <li> {{$profile->user->name}}</li>
+        <li><a href ="/profiles/{{$profile->id}}"> {{$profile->user->name}}</a></li>
         @endforeach
     </ul>
 @endsection

@@ -8,7 +8,7 @@
     <p>Recent posts</p>
     <ul>
         @foreach ($posts as $post)
-        <li> {{$post->user->name}} says {{$post->text}}</li>
+        <li> <a href ="/profiles/{{$post->user->userProfile->id}}">{{$post->user->name}}</a> says <a href ="/posts/{{$post->id}}">{{$post->text}} </a></li>
         @endforeach
     </ul>
 @endsection
