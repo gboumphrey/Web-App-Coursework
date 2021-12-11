@@ -23,6 +23,15 @@ class UserTableSeeder extends Seeder
         $me->remember_token = 'remembertk';
         $me->save();
 
+        $admin = new User;
+        $admin->name = 'Admin Man';
+        $admin->email = 'admin@admin.com';
+        $admin->email_verified_at = now();
+        $admin->password = 'admin';
+        $admin->remember_token = 'remembertk';
+        $admin->is_admin = True;
+        $admin->save();
+
         $users = User::factory()->count(4)->has(UserProfile::factory())->create();
 
     }

@@ -20,5 +20,10 @@ class UserProfileTableSeeder extends Seeder
         $me->user_id = 1;
         $me->save();
 
+        $su = new UserProfile;
+        $su->aboutme = 'I am the Admin';
+        $su->user_id = 2;
+        $su->save();
+
     }
 }
