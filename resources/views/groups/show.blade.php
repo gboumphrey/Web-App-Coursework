@@ -6,7 +6,7 @@
     <h2>Members</h2>
     <ul>
         @foreach ($group->users as $user)
-        <li> {{$user->name}}</li>
+        <li><a href="{{route('profiles.show', ['id'=> $user->userprofile->id])}}"> {{$user->name}}</a></li>
         @endforeach
     </ul>
 @endsection

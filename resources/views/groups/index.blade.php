@@ -8,7 +8,7 @@
     <h1>Groups</h1>
     <ul>
         @foreach ($groups as $group)
-        <li> <a href ="/groups/{{$group->id}}"> {{$group->name}}</a></li>
+        <li> <a href ="{{route('groups.show', ['id'=> $group->id])}}"> {{$group->name}}</a></li>
         @endforeach
     </ul>
 @endsection

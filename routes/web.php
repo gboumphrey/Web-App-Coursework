@@ -21,10 +21,13 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/{id}', [PostController::class, 'show']);
+Route::get('/posts/{id}', [PostController::class, 'show'])
+    ->name('posts.show');
 
 Route::get('/groups', [GroupController::class, 'index']);
-Route::get('/groups/{id}', [GroupController::class, 'show']);
+Route::get('/groups/{id}', [GroupController::class, 'show'])
+    ->name('groups.show');
 
 Route::get('/profiles', [UserProfileController::class, 'index']);
-Route::get('/profiles/{id}', [UserProfileController::class, 'show']);
+Route::get('/profiles/{id}', [UserProfileController::class, 'show'])
+    ->name('profiles.show');
