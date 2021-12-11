@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(UserProfileTableSeeder::class);
         $this->call(PostTableSeeder::class);
+        $this->call(CommentTableSeeder::class);
         
         $groups = Group::get();
         User::get()->each(function ($user) use ($groups) {
