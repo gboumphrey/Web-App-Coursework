@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -38,18 +39,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|integer',
             'text' => 'required|max:512'
         ]);
-        try{
-            $test = User::findOrFail($validatedData['user_id']);
-            //for some reasn i cant catch this so it 404s
-        } catch(ModelNotFoundException $e) {
-            dd(get_class_methods($e)); // lists all available methods for exception object
-            dd($e);
-        }
+        
         $in = new Post;
-        $in->user_id = $validatedData['user_id'];
+        $in->user_id = Auth::id();
         $in->text = $validatedData['text'];
         $in->save();
         session()->flash('message', 'Post added');

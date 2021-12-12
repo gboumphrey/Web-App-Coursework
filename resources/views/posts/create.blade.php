@@ -7,7 +7,6 @@
 @section('content')
     <form method="POST" action="{{route('posts.store')}}">
         @csrf
-        <p>User: <input type="text" name="user_id" value="{{old('user_id')}}"></p>
         <p>Text: <input type="text" name="text" value="{{old('text')}}"></p>
         <input type ="submit" value="Submit">
         <a href=" {{route('posts.index')}}"> Cancel</a>
