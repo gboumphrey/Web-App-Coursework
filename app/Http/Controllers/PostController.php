@@ -27,12 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        if(Auth::check()){
-            return view('posts.create');
-        }
-        else{
-            return redirect()->route('login');
-        }
+        return view('posts.create');
     }
 
     /**
