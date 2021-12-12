@@ -20,14 +20,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index'])
+    ->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])
+    ->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])
+    ->name('posts.store');
 Route::get('/posts/{id}', [PostController::class, 'show'])
     ->name('posts.show');
 
-Route::get('/groups', [GroupController::class, 'index']);
+Route::get('/groups', [GroupController::class, 'index'])
+    ->name('groups.index');
 Route::get('/groups/{id}', [GroupController::class, 'show'])
     ->name('groups.show');
 
-Route::get('/profiles', [UserProfileController::class, 'index']);
+Route::get('/profiles', [UserProfileController::class, 'index'])
+    ->name('profiles.index');
 Route::get('/profiles/{id}', [UserProfileController::class, 'show'])
     ->name('profiles.show');
+
+    
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
