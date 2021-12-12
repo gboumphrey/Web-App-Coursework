@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserProfile;
+use App\Services\Logstf;
+
 class UserProfileController extends Controller
 {
+
+    public function logs(Logstf $l){ //this creates or gets the logstf singleton
+        $l->getlogs('example'); //this calls getlog method from service container
+        //therefore i dont have to code my api interactions here, thats all sorted in container
+        //and can be used whereever i want by just calling
+    }
     /**
      * Display a listing of the resource.
      *
