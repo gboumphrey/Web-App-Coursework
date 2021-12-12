@@ -28,6 +28,12 @@ Route::post('/posts', [PostController::class, 'store'])
     ->name('posts.store')->middleware(['auth']);
 Route::get('/posts/{id}', [PostController::class, 'show'])
     ->name('posts.show');
+Route::get('/posts/{id}/edit', [PostController::class, 'edit'])
+    ->name('posts.edit')->middleware(['auth']);
+Route::patch('/posts/{id}', [PostController::class, 'update'])
+    ->name('posts.update')->middleware(['auth']);
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])
+    ->name('posts.destroy')->middleware(['auth']);
 
 Route::get('/groups', [GroupController::class, 'index'])
     ->name('groups.index');

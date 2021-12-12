@@ -5,11 +5,16 @@
 @endsection
 
 @section('content')
-    <p> <a href="{{route('posts.create')}}"> Create Post </a></p>
-    <h2>Recent posts</h2>
-    <ul>
-        @foreach ($posts as $post)
-        <li> <a href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">{{$post->user->name}}</a> says <a href ="{{route('posts.show', ['id'=> $post->id])}}">{{$post->text}} </a></li>
-        @endforeach
-    </ul>
+    <h2> <a href="{{route('posts.create')}}" style="float: right;"> New Post </a></h2>
+    <h1>Recent posts</h1>
+    @foreach ($posts as $post)
+        <div class="post-box"> 
+            <h3><a href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">{{$post->user->name}}</a></h3>
+            @if(Auth::id()==$post->user->id || Auth::user()->is_admin)
+                <p> <a href="{{route('posts.edit', ['id'=>$post->id])}}" style="float: right;"> edit </a></p>
+            @endif
+            <h5><a href ="{{route('posts.show', ['id'=> $post->id])}}">Posted at {{$post->created_at}} </a></h5>
+            <p>{{$post->text}}</p>
+        </div>
+    @endforeach
 @endsection

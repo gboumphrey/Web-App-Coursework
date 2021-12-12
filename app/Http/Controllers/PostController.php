@@ -70,7 +70,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -82,7 +83,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'text' => 'required|max:512'
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->text = $validatedData['text'];
+        $post->save();
+        session()->flash('message', 'Post edited');
+        return view('posts.show', ['post' => $post]);
+
     }
 
     /**
@@ -93,6 +103,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        
+        session()->flash('message', 'Post deleted');
+        return redirect()->route('posts.index');
     }
 }
