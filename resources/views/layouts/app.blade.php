@@ -33,8 +33,20 @@
                 </form>
             @else
                 <a href="{{route('register')}}" style="float: right;"> Register </a>
+                <a style="float:right;"> | </a>
+                <a href="{{route('login')}}" style="float: right;"> Login </a>
             @endif
         </div>
+        @if ($errors->any())
+            <div class="errorbox">
+                Error occurred!
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div>
             <main>
                 @yield('content')

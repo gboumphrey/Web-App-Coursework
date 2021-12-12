@@ -17,7 +17,7 @@ use App\Http\Controllers\UserProfileController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/posts');
 });
 
 Route::get('/posts', [PostController::class, 'index'])
