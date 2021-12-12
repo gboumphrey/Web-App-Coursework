@@ -11,7 +11,7 @@
         <div class="post-box"> 
             <h3><a href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">{{$post->user->name}}</a></h3>
             @if(Auth::check())
-                @if(Auth::id()==$post->user->id || Auth::id()->is_admin)
+                @if(Auth::id()==$post->user->id || Auth::user()->is_admin)
                     <p> <a href="{{route('posts.edit', ['id'=>$post->id])}}" style="float: right;"> edit </a></p>
                 @endif
             @endif

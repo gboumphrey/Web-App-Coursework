@@ -18,7 +18,7 @@
     </head>
     <body>
         <div class="topnav">
-            <a class="active" href="{{route('posts.index')}}">CW2</a>
+            <a class="active">Coursework2</a>
             <a href="{{route('posts.index')}}">Posts</a>
             <a href="{{route('groups.index')}}">Groups</a>
             <a href="{{route('profiles.index')}}">Profiles</a>
