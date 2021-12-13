@@ -39,7 +39,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'text' => 'required|max:512',
+            'text' => 'required|max:255',
             'file' => 'mimes:jpg,bmp,png'
         ]);
         
@@ -89,7 +89,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'text' => 'required|max:512'
+            'text' => 'required|max:255'
         ]);
 
         $post = Post::findOrFail($id);
