@@ -24,9 +24,11 @@
             <a class="timestamp"> at @{{comment.created_at}} </a>
             <br><a class="commenttext">@{{comment.text}}</a>
         </div>
-        <div class="add-comment">
-            <input type="text" id="input" v-model="newCommentText">
-            <button @click="createComment">Comment</button>
+        <div class="comment-box" style="background-color:white;">
+            <div class ="add-comment">
+                <input type="text" id="input" v-model="newCommentText">
+                <button style="float:right;" @click="createComment">Comment</button>
+            </div>
         </div>
     </div>
 
