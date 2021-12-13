@@ -45,7 +45,6 @@
         </div>
         @if ($errors->any())
             <div class="errorbox">
-                Error occurred!
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{$error}}</li>

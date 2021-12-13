@@ -43,12 +43,13 @@ class PostController extends Controller
             'file' => 'mimes:jpg,bmp,png'
         ]);
         
-        $validatedData['file']->store('public');
-
         $in = new Post;
         $in->user_id = Auth::id();
         $in->text = $validatedData['text'];
-        $in->file_path = $validatedData['file']->hashName();
+        if(array_key_exists('file', $validatedData)){
+            $in->file_path = $validatedData['file']->hashName();
+            $validatedData['file']->store('public');
+        }
         $in->save();
         session()->flash('message', 'Post added');
         return redirect()->route('posts.index');

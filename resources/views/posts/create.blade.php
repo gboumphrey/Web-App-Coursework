@@ -5,11 +5,17 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
-        @csrf
-        <p>Text: <input type="text" name="text" value="{{old('text')}}"></p>
-        <p>Image: <input type="file" name="file">
-        <input type ="submit" value="Submit">
-        <a href=" {{route('posts.index')}}"> Cancel</a>
-    </form>
+    <a class="subtitle"> Create Post </a>
+    <div class="post-box">
+        <div class="comment-box" style="background-color:white;">
+            <form class="add-comment" method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
+                @csrf
+                <textarea rows="4" name="text">{{old('text')}}</textarea><br>
+                <input type="file" name="file">
+                <button style="float:right;" type="submit">Submit</button>
+                <a href=" {{route('posts.index')}}"style="float:right"> Cancel</a>
+            </form>
+        </div>
+    </div>
+    
 @endsection

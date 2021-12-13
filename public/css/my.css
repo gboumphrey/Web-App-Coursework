@@ -19,6 +19,14 @@ a {
     background-color:cornflowerblue;
     border-radius: 10px;
 }
+.errorbox{
+    font-family: 'Roboto';
+    color:rgb(190, 34, 34);
+    width: 30%;
+    margin:auto;
+    border-radius:15px;
+    background-color:white;
+}
 .center-col{
   max-width: 900px;
   margin:auto;
@@ -108,6 +116,9 @@ a {
 }
 .add-comment > input {
     box-sizing: border-box;
+    width: 100%;
+}
+.add-comment > textarea {
     width: 100%;
 }
 .showingxofy > p {
