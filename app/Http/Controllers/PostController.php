@@ -39,12 +39,16 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'text' => 'required|max:512'
+            'text' => 'required|max:512',
+            'file' => 'mimes:jpg,bmp,png'
         ]);
         
+        $validatedData['file']->store('public');
+
         $in = new Post;
         $in->user_id = Auth::id();
         $in->text = $validatedData['text'];
+        $in->file_path = $validatedData['file']->hashName();
         $in->save();
         session()->flash('message', 'Post added');
         return redirect()->route('posts.index');
