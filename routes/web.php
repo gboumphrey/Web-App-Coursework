@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,9 @@ Route::get('/', function () {
     return redirect('/posts');
 });
 Route::get('/logs', [UserProfileController::class, 'logs']);
+
+Route::get('/comments', [CommentController::class, 'index'])
+    ->name('comments.index');
 
 Route::get('/posts', [PostController::class, 'index'])
     ->name('posts.index');
