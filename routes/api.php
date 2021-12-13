@@ -21,8 +21,8 @@ Route::post('/comments', [CommentController::class, 'apiStore'])
     ->name('api.comments.store');
 Route::get('/posts/{id}', [CommentController::class, 'apiIndexOnPostId'])
     ->name('api.comments.indexonpostid');
-Route::post('/posts/{id}', [CommentController::class, 'apiStoreOnPostId'])
-    ->name('api.comments.storeonpostid');
+Route::get('/profiles/{id}', [CommentController::class, 'apiIndexOnProfileId'])
+    ->name('api.comments.indexonprofileid');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

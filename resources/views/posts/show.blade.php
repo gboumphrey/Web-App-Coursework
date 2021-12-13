@@ -44,6 +44,7 @@
                 axios.post("{{ route ('api.comments.store')}}",
                 {
                     commentable_id: {{$post->id}},
+                    commentable_type: "App\Models\Post",
                     user_id: {{Auth::id()}},
                     text: this.newCommentText,
                 })

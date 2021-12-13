@@ -30,13 +30,31 @@ class CommentController extends Controller
         $comments = Comment::where('commentable_type', 'App\Models\Post')->where('commentable_id', $id)->get();
         return $comments;
     }
+    
+    public function apiIndexOnProfileId($id){
+        $comments = Comment::where('commentable_type', 'App\Models\UserProfile')->where('commentable_id', $id)->get();
+        return $comments;
+    }
 
     public function apiStore(Request $request)
     {
         $c = new Comment();
         $c->user_id = $request['user_id'];
         $c->text= $request['text'];
-        $c->commentable_type = Post::class;
+        $c->commentable_type = $request['commentable_type'];
+        $c->commentable_id = $request['commentable_id'];
+        $c->created_at = now();
+        $c->updated_at = now();
+        $c->save();
+        return $c;
+    }
+    
+    public function apiStoreprf(Request $request)
+    {
+        $c = new Comment();
+        $c->user_id = $request['user_id'];
+        $c->text= $request['text'];
+        $c->commentable_type = UserProfile::class;
         $c->commentable_id = $request['commentable_id'];
         $c->created_at = now();
         $c->updated_at = now();
