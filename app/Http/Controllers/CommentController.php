@@ -49,18 +49,6 @@ class CommentController extends Controller
         return $c;
     }
     
-    public function apiStoreprf(Request $request)
-    {
-        $c = new Comment();
-        $c->user_id = $request['user_id'];
-        $c->text= $request['text'];
-        $c->commentable_type = UserProfile::class;
-        $c->commentable_id = $request['commentable_id'];
-        $c->created_at = now();
-        $c->updated_at = now();
-        $c->save();
-        return $c;
-    }
     /**
      * Show the form for creating a new resource.
      *
