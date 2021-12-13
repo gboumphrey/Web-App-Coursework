@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get()->reverse();
+        $posts = Post::orderBy('id','DESC')->paginate(10);
         return view('posts.index', ['posts' => $posts]);
     }
 

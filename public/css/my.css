@@ -110,3 +110,22 @@ a {
     box-sizing: border-box;
     width: 100%;
 }
+.showingxofy > p {
+    font-family: 'Roboto';
+}
+.prevpage {
+    font-family: 'Roboto';
+    float:left;
+    margin-left:50px;
+    border-color:rgb(233, 89, 32);
+    border-style:solid;
+    border-radius: 10px;
+}
+.nextpage {
+    font-family: 'Roboto';
+    float:right;
+    margin-right:50px;
+    border-color:rgb(233, 89, 32);
+    border-style:solid;
+    border-radius: 10px;
+}

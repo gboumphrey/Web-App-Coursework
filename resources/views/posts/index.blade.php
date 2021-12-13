@@ -27,4 +27,7 @@
             @endif
         </div>
     @endforeach
+    <div style="top-padding:50px">
+        {{$posts->links()}}
+    </div>
 @endsection
