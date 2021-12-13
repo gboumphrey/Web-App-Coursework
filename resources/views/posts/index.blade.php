@@ -5,18 +5,26 @@
 @endsection
 
 @section('content')
-    <h2> <a href="{{route('posts.create')}}" style="float: right;"> New Post </a></h2>
-    <h1>Recent posts</h1>
+    <a class="postbtn" href="{{route('posts.create')}}" style="float: right;"> New Post </a>
+    <a class="subtitle">Recent posts</a>
     @foreach ($posts as $post)
         <div class="post-box"> 
-            <h3><a href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">{{$post->user->name}}</a></h3>
+            <a class="author" href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">{{$post->user->name}}</a>
             @if(Auth::check())
                 @if(Auth::id()==$post->user->id || Auth::user()->is_admin)
-                    <p> <a href="{{route('posts.edit', ['id'=>$post->id])}}" style="float: right;"> edit </a></p>
+                    <form class="editbtn" method="GET" action="{{route('posts.edit', ['id'=>$post->id])}}"> 
+                        @csrf
+                        <input type ="submit" value="Edit">
+                    </form>
+                    <form class="delbtn" method="POST" action="{{route('posts.destroy', ['id' => $post->id])}}">
+                        @csrf
+                        @method('DELETE')
+                        <input type ="submit" value="Delete">
+                    </form>
                 @endif
             @endif
-            <h5><a href ="{{route('posts.show', ['id'=> $post->id])}}">Posted at {{$post->created_at}} </a></h5>
-            <p>{{$post->text}}</p>
+            <br><a class="timestamp" href ="{{route('posts.show', ['id'=> $post->id])}}">Posted at {{$post->created_at}} </a>
+            <br><a class="posttext">{{$post->text}}</a>
         </div>
     @endforeach
 @endsection

@@ -11,14 +11,17 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/my.css') }}">
+        
+        <link rel="stylesheet" href="fonts,_icomoon,_style.css+css,_owl.carousel.min.css+css,_bootstrap.min.css+css,_style.css.pagespeed.cc.lBr2RD9xRB.css" />
+
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
         <div class="topnav">
-            <a class="active">Coursework2</a>
+            <a style="margin-right: 20px; font-size: 21px; background-color:none;">Coursework2</a>
             <a href="{{route('posts.index')}}">Posts</a>
             <a href="{{route('groups.index')}}">Groups</a>
             <a href="{{route('profiles.index')}}">Profiles</a>
@@ -32,8 +35,7 @@
                     </a>
                 </form>
             @else
-                <a href="{{route('register')}}" style="float: right;"> Register </a>
-                <a style="float:right;"> | </a>
+                <a href="{{route('register')}}" style="float: right; margin-left: 3px;"> Register </a>
                 <a href="{{route('login')}}" style="float: right;"> Login </a>
             @endif
         </div>
@@ -47,11 +49,12 @@
                 </ul>
             </div>
         @endif
-        <div>
-            <main>
+
+        <main>
+            <div class="center-col">
                 @yield('content')
-            </main>
-        </div>
+            </div>
+        </main>
     </body>
 </html>
 </div>

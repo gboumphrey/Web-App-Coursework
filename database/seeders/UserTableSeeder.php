@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
         $admin->is_admin = True;
         $admin->save();
 
-        $users = User::factory()->count(4)->has(UserProfile::factory())->create();
+        $users = User::factory()->count(8)->has(UserProfile::factory())->create();
 
     }
 }

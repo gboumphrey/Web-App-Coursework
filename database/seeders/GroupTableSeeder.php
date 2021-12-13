@@ -23,5 +23,11 @@ class GroupTableSeeder extends Seeder
         $g3 = new Group;
         $g3->name = "Swansea Third-Years";
         $g3->save();
+        $g4 = new Group;
+        $g4->name = "DONT JOIN THIS gROUP!!!!";
+        $g4->save();
+        $g5 = new Group;
+        $g5->name = "Dogs";
+        $g5->save();
     }
 }

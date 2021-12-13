@@ -1,0 +1,87 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&family=Roboto:wght@300&family=Source+Sans+3&display=swap');
+
+body {
+  background-color:#3331bd;
+}
+a {
+  color:black;
+  text-decoration: none;
+}
+.topnav {
+    vertical-align:top;
+    padding:18px;
+}
+.topnav > a {
+    font-family: 'Readex Pro';
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:cornflowerblue;
+    border-radius: 10px;
+}
+.center-col{
+  max-width: 900px;
+  margin:auto;
+}
+.bigtitle {
+    font-family: 'Readex Pro';
+    text-align: center;
+    font-size: 72px;
+}
+.subtitle {
+    font-family: 'Readex Pro';
+    font-size: 56px;
+}
+.el {
+    background-color: white;
+    border-radius: 20px;
+    width: 250px;
+    float: left;
+    margin: 20px;
+    text-align: center;
+}
+.el > a {
+  margin-left:20px;
+  margin-right:20px;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-family: 'Source Sans 3';
+  font-size: 20px;
+}
+.editbtn {
+    float: right;
+    padding-right:20px;
+    color: rgb(182, 48, 48);
+}
+.delbtn {
+    float: right;
+    color: rgb(182, 48, 48);
+}
+.post-box {
+  background-color: white;
+  border-radius: 20px;
+  margin-left:8px;
+  margin-right:8px;
+  margin-top:20px;
+  padding-top:4px;
+  padding-bottom:10px;
+}
+.post-box > .author {
+  margin-left:20px;
+  text-transform: uppercase; 
+  font-family: 'Source Sans 3';
+  font-size: 20px;
+} 
+.post-box > .timestamp {
+  margin-left:20px;
+  color:rgb(102, 102, 102);
+  font-size: 9px;
+  vertical-align: top;
+}
+.post-box > .posttext {
+  margin-left:30px;
+  font-family: 'Roboto';
+}

@@ -2,11 +2,9 @@
 @section('title', $group->name)
 
 @section('content')
-    <h1>{{$group->name}}</h1>
-    <h2>Members</h2>
-    <ul>
-        @foreach ($group->users as $user)
-        <li><a href="{{route('profiles.show', ['id'=> $user->userprofile->id])}}"> {{$user->name}}</a></li>
-        @endforeach
-    </ul>
+    <div class="bigtitle">{{$group->name}}</div>
+    <a class="subtitle">Members</a><br>
+    @foreach ($group->users as $user)
+        <div class="el"><a href="{{route('profiles.show', ['id'=> $user->userprofile->id])}}"> {{$user->name}}</a> </div> 
+    @endforeach
 @endsection
