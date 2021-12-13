@@ -29,6 +29,7 @@
                 {
                     user_id: {{Auth::id()}},
                     text: this.newCommentText,
+                    commentable_id: 1,
                 })
                 .then(response => {
                     this.comments.push(response.data);
