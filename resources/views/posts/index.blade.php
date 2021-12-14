@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <a class="postbtn" href="{{route('posts.create')}}" style="float: right;"> New Post </a>
+    <a href="{{route('posts.create')}}" style="float: right;"><div class="newpostbtn">+</div></a>
     <a class="subtitle">Recent posts</a>
     @foreach ($posts as $post)
         <div class="post-box"> 
@@ -30,7 +30,6 @@
             @endif
         </div>
     @endforeach
-    <div style="top-padding:50px">
-        {{$posts->links()}}
-    </div>
+    
+    {{$posts->links()}}
 @endsection

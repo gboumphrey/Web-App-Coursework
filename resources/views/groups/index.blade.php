@@ -7,6 +7,6 @@
 @section('content')
     <a class="subtitle">Groups</a><br>
     @foreach ($groups as $group)
-        <div class="el"><a href ="{{route('groups.show', ['id'=> $group->id])}}"> {{$group->name}}</a> </div> 
+        <a href ="{{route('groups.show', ['id'=> $group->id])}}"> <div class="el">{{$group->name}}</div> </a> 
     @endforeach
 @endsection

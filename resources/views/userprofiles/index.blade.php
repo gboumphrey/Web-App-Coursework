@@ -7,6 +7,6 @@
 @section('content')
     <a class="subtitle">Profiles</a><br>
     @foreach ($userprofiles as $profile)
-        <div class="el"><a href ="{{route('profiles.show', ['id'=> $profile->id])}}"> {{$profile->user->name}}</a> </div> 
+        <a href ="{{route('profiles.show', ['id'=> $profile->id])}}"><div class="el"> {{$profile->user->name}}</div> </a> 
     @endforeach
 @endsection
