@@ -23,7 +23,7 @@
             @endif
         @endif
         <div class="comment-box" v-for="comment in comments">
-            <a class="author" href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">@{{comment.user_id}}</a>
+            <a class="author" href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">@{{comment.username}}</a>
             <a class="timestamp"> at @{{comment.created_at}} </a>
             <br><a class="commenttext">@{{comment.text}}</a>
         </div>
@@ -64,6 +64,7 @@
             axios.get("{{route('api.comments.indexonpostid', ['id'=> $post->id])}}")
             .then( response => {
                 this.comments = response.data;
+                console.log(response.data[0]);
             })
             .catch(response => {
                 console.log(response);

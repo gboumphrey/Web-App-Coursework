@@ -7,6 +7,7 @@ use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\UserProfile;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -28,12 +29,26 @@ class CommentController extends Controller
 
     public function apiIndexOnPostId($id){
         $comments = Comment::where('commentable_type', 'App\Models\Post')->where('commentable_id', $id)->get();
-        return $comments;
+        $arr = [];
+        foreach($comments as $comment) {
+            $comment["username"] = User::find($comment->user_id)->name;
+            array_push($arr, $comment);
+        }
+        return $arr;
     }
     
     public function apiIndexOnProfileId($id){
         $comments = Comment::where('commentable_type', 'App\Models\UserProfile')->where('commentable_id', $id)->get();
-        return $comments;
+        $arr = [];
+        foreach($comments as $comment) {
+            $comment["username"] = User::find($comment->user_id)->name;
+            array_push($arr, $comment);
+        }
+        return $arr;
+    }
+    public function apiGetCommentOwner($id){
+        $owner = User::find($id)->name;
+        return $owner;
     }
 
     public function apiStore(Request $request)
@@ -49,6 +64,7 @@ class CommentController extends Controller
         $c->created_at = now();
         $c->updated_at = now();
         $c->save();
+        $c["username"] = User::find($c->user_id)->name;
         return $c;
     }
     

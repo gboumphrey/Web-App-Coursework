@@ -9,7 +9,7 @@
     <a class="subtitle">Comments</a><br>
     <div class="post-box" id="post">
         <div class="comment-box" v-for="comment in comments">
-            <a class="author">@{{comment.user_id}}</a>
+            <a class="author">@{{comment.username}}</a>
             <a class="timestamp"> at @{{comment.created_at}} </a>
             <br><a class="commenttext">@{{comment.text}}</a>
         </div>
