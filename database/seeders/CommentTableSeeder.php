@@ -29,5 +29,7 @@ class CommentTableSeeder extends Seeder
         $c2->commentable_type = UserProfile::class;
         $c2->commentable_id = UserProfile::inRandomOrder()->first()->id;
         $c2->save();
+
+        $comments = Comment::factory()->count(50)->create();
     }
 }
