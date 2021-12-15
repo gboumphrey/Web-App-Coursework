@@ -13,8 +13,6 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/my.css') }}">
         
-        <link rel="stylesheet" href="fonts,_icomoon,_style.css+css,_owl.carousel.min.css+css,_bootstrap.min.css+css,_style.css.pagespeed.cc.lBr2RD9xRB.css" />
-
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>

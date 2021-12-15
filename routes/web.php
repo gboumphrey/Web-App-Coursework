@@ -22,6 +22,7 @@ use App\Http\Controllers\CommentOnPostController;
 Route::get('/', function () {
     return redirect('/posts');
 });
+
 Route::get('/logs', [UserProfileController::class, 'logs']);
 
 Route::get('/posts', [PostController::class, 'index'])
@@ -48,7 +49,7 @@ Route::get('/profiles', [UserProfileController::class, 'index'])
     ->name('profiles.index');
 Route::get('/profiles/{id}', [UserProfileController::class, 'show'])
     ->name('profiles.show')->middleware(['auth']);
-    
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

@@ -76,7 +76,13 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit', ['post' => $post]);
+        
+        if($post->user_id == Auth::id() || Auth::user()->is_admin) {
+            return view('posts.edit', ['post' => $post]);
+        }
+        else {
+            return back()->withErrors(['error' => 'You do not have permission to edit this.']);
+        }
     }
 
     /**
@@ -100,7 +106,7 @@ class PostController extends Controller
             return view('posts.show', ['post' => $post]);
         }
         else {
-            return view('posts.show', ['post' => $post])->with('error','This post does not belong to you.');
+            return back()->withErrors(['error' => 'You do not have permission to edit this.']);
         }
 
     }
@@ -114,9 +120,14 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
-        $post->delete();
-        
-        session()->flash('message', 'Post deleted');
-        return redirect()->route('posts.index');
+        if($post->user_id == Auth::id() || Auth::user()->is_admin) {
+            $post->delete();
+            
+            session()->flash('message', 'Post deleted');
+            return redirect()->route('posts.index');
+        }
+        else {
+            return back()->withErrors(['error' => 'You do not have permission to delete this.']);
+        };
     }
 }
