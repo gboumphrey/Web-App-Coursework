@@ -72,11 +72,15 @@ class CommentController extends Controller
         
         if($request['commentable_type']=="App\Models\Post") {
             $post = Post::find($request['commentable_id']);
-            User::find($post->user_id)->notify(new CommentOnPost($post->id));
+            if($post->user_id != $request['user_id']) {
+                User::find($post->user_id)->notify(new CommentOnPost($post->id));
+            };
         }
         if($request['commentable_type']=="App\Models\UserProfile") {
             $profile = UserProfile::find($request['commentable_id']);
-            User::find($profile->user_id)->notify(new CommentOnProfile($profile->id));
+            if($profile->user_id != $request['user_id']) {
+                User::find($profile->user_id)->notify(new CommentOnProfile($profile->id));
+            };
         }
 
         return $c;

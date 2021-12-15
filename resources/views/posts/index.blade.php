@@ -28,6 +28,9 @@
                     </form>
                 @endif
             @endif
+            <div class="comment-box" style="text-align:center">
+                <a href="{{route('posts.show', ['id'=> $post->id])}}" style="font-family:'Calibri';text-align:center;">View Comments </a>
+            </div>
         </div>
     @endforeach
     

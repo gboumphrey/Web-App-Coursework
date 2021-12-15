@@ -28,8 +28,8 @@
             <br><a class="commenttext">@{{comment.text}}</a>
             <template v-if="comment.user_id=={{Auth::id()}} || {{Auth::user()->is_admin}}">
                 <div style="float:right;">
+                    <button style="float:right;margin-right:8px;" @click="editComment">Edit</button>
                     <button style="float:right;" @click="deleteComment">Delete</button>
-                    <button style="float:right;" @click="editComment">Edit</button>
                 </div>
             </template>
         </div>
