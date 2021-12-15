@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\UserProfile;
 use App\Models\User;
+use App\Notifications\CommentOnPostController;
+use App\Notifications\CommentOnPost;
+use App\Notifications\CommentOnProfile;
 
 class CommentController extends Controller
 {
@@ -46,7 +49,7 @@ class CommentController extends Controller
         }
         return $arr;
     }
-    
+
     public function apiDestroy($id){
         $comment = Comment::findOrFail($id);        
         $comment->delete();
@@ -66,6 +69,16 @@ class CommentController extends Controller
         $c->updated_at = now();
         $c->save();
         $c["username"] = User::find($c->user_id)->name;
+        
+        if($request['commentable_type']=="App\Models\Post") {
+            $post = Post::find($request['commentable_id']);
+            User::find($post->user_id)->notify(new CommentOnPost($post->id));
+        }
+        if($request['commentable_type']=="App\Models\UserProfile") {
+            $profile = UserProfile::find($request['commentable_id']);
+            User::find($profile->user_id)->notify(new CommentOnProfile($profile->id));
+        }
+
         return $c;
     }
     

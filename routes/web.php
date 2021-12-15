@@ -6,6 +6,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentOnPostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,8 +47,7 @@ Route::get('/groups/{id}', [GroupController::class, 'show'])
 Route::get('/profiles', [UserProfileController::class, 'index'])
     ->name('profiles.index');
 Route::get('/profiles/{id}', [UserProfileController::class, 'show'])
-    ->name('profiles.show')->middleware(['auth']);;
-
+    ->name('profiles.show')->middleware(['auth']);
     
 Route::get('/dashboard', function () {
     return view('dashboard');
