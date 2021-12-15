@@ -19,6 +19,14 @@ a {
     background-color:cornflowerblue;
     border-radius: 10px;
 }
+.topnav > form {
+    font-family: 'Readex Pro';
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:cornflowerblue;
+    border-radius: 10px;
+}
 .errorbox{
     font-family: 'Roboto';
     color:rgb(190, 34, 34);

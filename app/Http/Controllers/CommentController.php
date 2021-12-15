@@ -46,9 +46,10 @@ class CommentController extends Controller
         }
         return $arr;
     }
-    public function apiGetCommentOwner($id){
-        $owner = User::find($id)->name;
-        return $owner;
+    
+    public function apiDestroy($id){
+        $comment = Comment::findOrFail($id);        
+        $comment->delete();
     }
 
     public function apiStore(Request $request)

@@ -38,6 +38,7 @@
                         {{ __('Log Out') }}
                     </a>
                 </form>
+                <a style="float:right; margin-right:4px;" href="{{route('profiles.show', ['id'=> Auth::user()->userprofile])}}"> {{Auth::user()->name}} </a>
             @else
                 <a href="{{route('register')}}" style="float: right; margin-left: 3px;"> Register </a>
                 <a href="{{route('login')}}" style="float: right;"> Login </a>

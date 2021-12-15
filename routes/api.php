@@ -23,6 +23,8 @@ Route::get('/posts/{id}', [CommentController::class, 'apiIndexOnPostId'])
     ->name('api.comments.indexonpostid');
 Route::get('/profiles/{id}', [CommentController::class, 'apiIndexOnProfileId'])
     ->name('api.comments.indexonprofileid');
+Route::delete('/posts/{id}', [CommentController::class, 'apiDestroy'])
+    ->name('api.comments.delete');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

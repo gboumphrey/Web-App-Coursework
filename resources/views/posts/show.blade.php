@@ -26,6 +26,12 @@
             <a class="author" href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">@{{comment.username}}</a>
             <a class="timestamp"> at @{{comment.created_at}} </a>
             <br><a class="commenttext">@{{comment.text}}</a>
+            <template v-if="comment.user_id=={{Auth::id()}} || {{Auth::user()->is_admin}}">
+                <div style="float:right;">
+                    <button style="float:right;" @click="deleteComment">Delete</button>
+                    <button style="float:right;" @click="editComment">Edit</button>
+                </div>
+            </template>
         </div>
         <div class="comment-box" style="background-color:white;">
             <div class ="add-comment">
@@ -58,6 +64,12 @@
                 .catch(response => {
                 console.log(response);
                 })
+            },
+            deleteComment: function(){
+                console.log("placeholder delete")
+            },
+            editComment: function(){
+                console.log("placeholder edit") 
             }
         },
         mounted() {

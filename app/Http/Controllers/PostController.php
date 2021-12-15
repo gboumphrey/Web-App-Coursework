@@ -93,10 +93,15 @@ class PostController extends Controller
         ]);
 
         $post = Post::findOrFail($id);
-        $post->text = $validatedData['text'];
-        $post->save();
-        session()->flash('message', 'Post edited');
-        return view('posts.show', ['post' => $post]);
+        if($post->user_id == Auth::id() || Auth::user()->is_admin) {
+            $post->text = $validatedData['text'];
+            $post->save();
+            session()->flash('message', 'Post edited');
+            return view('posts.show', ['post' => $post]);
+        }
+        else {
+            return view('posts.show', ['post' => $post])->with('error','This post does not belong to you.');
+        }
 
     }
 
