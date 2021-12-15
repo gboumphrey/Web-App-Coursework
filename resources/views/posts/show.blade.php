@@ -24,7 +24,7 @@
         @endif
         <div class="comment-box" v-for="comment in comments">
             <a class="author" href ="{{route('profiles.show', ['id'=> $post->user->userprofile->id])}}">@{{comment.username}}</a>
-            <a class="timestamp"> at @{{comment.created_at}} </a>
+            <a class="timestamp"> at @{{comment.time}} </a>
             <br><a class="commenttext">@{{comment.text}}</a>
             <template v-if="comment.user_id=={{Auth::id()}} || {{Auth::user()->is_admin}}">
                 <div style="float:right;">

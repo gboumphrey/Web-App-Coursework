@@ -35,6 +35,7 @@ class CommentController extends Controller
         $arr = [];
         foreach($comments as $comment) {
             $comment["username"] = User::find($comment->user_id)->name;
+            $comment["time"] = implode(" ", explode('T', $comment->created_at));
             array_push($arr, $comment);
         }
         return $arr;
@@ -45,6 +46,7 @@ class CommentController extends Controller
         $arr = [];
         foreach($comments as $comment) {
             $comment["username"] = User::find($comment->user_id)->name;
+            $comment["time"] = implode(" ", explode('T', $comment->created_at));
             array_push($arr, $comment);
         }
         return $arr;
@@ -69,6 +71,8 @@ class CommentController extends Controller
         $c->updated_at = now();
         $c->save();
         $c["username"] = User::find($c->user_id)->name;
+        $c["time"] = implode(" ", explode('T', $c->created_at));
+
         
         if($request['commentable_type']=="App\Models\Post") {
             $post = Post::find($request['commentable_id']);
