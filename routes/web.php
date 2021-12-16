@@ -32,7 +32,7 @@ Route::get('/posts/create', [PostController::class, 'create'])
 Route::post('/posts', [PostController::class, 'store'])
     ->name('posts.store')->middleware(['auth']);
 Route::get('/posts/{id}', [PostController::class, 'show'])
-    ->name('posts.show')->middleware(['auth']);
+    ->name('posts.show');
 Route::get('/posts/{id}/edit', [PostController::class, 'edit'])
     ->name('posts.edit')->middleware(['auth']);
 Route::patch('/posts/{id}', [PostController::class, 'update'])
@@ -48,7 +48,7 @@ Route::get('/groups/{id}', [GroupController::class, 'show'])
 Route::get('/profiles', [UserProfileController::class, 'index'])
     ->name('profiles.index');
 Route::get('/profiles/{id}', [UserProfileController::class, 'show'])
-    ->name('profiles.show')->middleware(['auth']);
+    ->name('profiles.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

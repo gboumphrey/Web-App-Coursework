@@ -12,13 +12,26 @@
             <a class="author">@{{comment.username}}</a>
             <a class="timestamp"> at @{{comment.time}} </a>
             <br><a class="commenttext">@{{comment.text}}</a>
+            <template v-if="(comment.user_id=={{Auth::id() ?? '0'}} || {{Auth::user()->is_admin ?? 'false'}})">
+                <div style="float:right;">
+                    <button style="float:right;margin-right:8px;" @click="editComment">Edit</button>
+                    <button style="float:right;" @click="deleteComment(comment.id)">Delete</button>
+                </div>
+            </template>
         </div>
-        <div class="comment-box" style="background-color:white;">
-            <div class ="add-comment">
-                <input type="text" id="input" v-model="newCommentText">
-                <button style="float:right;" @click="createComment">Comment</button>
+        @if(Auth::check())
+            <div class="comment-box" style="background-color:white;">
+                <div class ="add-comment">
+                    <input type="text" id="input" v-model="newCommentText">
+                    <button style="float:right;" @click="createComment">Comment</button>
+                </div>
             </div>
-        </div>
+        @else
+            <div class="comment-box" style="text-align:center">
+                <a href="{{route('login')}}" style="font-family:'Calibri';text-align:center;">Login to Comment </a>
+            </div>
+        @endif
+
 
 <script>
     var app = new Vue({
@@ -33,7 +46,7 @@
                 {
                     commentable_id: {{$userprofile->id}},
                     commentable_type: "App\\Models\\UserProfile",
-                    user_id: {{Auth::id()}},
+                    user_id: {{Auth::id() ?? '0'}},
                     text: this.newCommentText,
                 })
                 .then(response => {
@@ -43,6 +56,13 @@
                 .catch(response => {
                 console.log(response);
                 })
+            },
+            deleteComment: function(commentId){
+                console.log("placeholder delete on id: ")
+                console.log(commentId);
+            },
+            editComment: function(){
+                console.log("placeholder edit") 
             }
         },
         mounted() {
