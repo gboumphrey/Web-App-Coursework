@@ -25,6 +25,11 @@ Route::get('/', function () {
 
 Route::get('/logs', [UserProfileController::class, 'logs']);
 
+Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])
+    ->name('comments.edit')->middleware(['auth']);
+Route::patch('/comments/{id}', [CommentController::class, 'update'])
+    ->name('comments.update')->middleware(['auth']);
+
 Route::get('/posts', [PostController::class, 'index'])
     ->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])

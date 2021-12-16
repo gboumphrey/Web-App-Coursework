@@ -27,9 +27,8 @@
             <a class="timestamp"> at @{{comment.time}} </a>
             <br><a class="commenttext">@{{comment.text}}</a>
             <template v-if="(comment.user_id=={{Auth::id() ?? '0'}} || {{Auth::user()->is_admin ?? 'false'}})">
-                <div style="float:right;">
-                    <button style="float:right;margin-right:8px;" @click="editComment">Edit</button>
-                    <button style="float:right;" @click="deleteComment(comment.id)">Delete</button>
+                <div style="float:right;margin-right:8px">
+                    <a v-bind:href="getEditLink(comment.id)"><button type="button"> Edit </button></a>
                 </div>
             </template>
         </div>
@@ -75,8 +74,13 @@
                 console.log("placeholder delete on id:");
                 console.log(commentId);
             },
-            editComment: function(){
-                console.log("placeholder edit") 
+            editComment: function(commentId){
+                console.log("placeholder edit on id:"); 
+                console.log(commentId);
+                axios.get("{{route('comments.edit','')}}"/commentId);
+            },
+            getEditLink: function(commentId){
+                return "/comments/" + commentId + "/edit";
             }
         },
         mounted() {

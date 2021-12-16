@@ -130,7 +130,14 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        
+        if($comment->user_id == Auth::id() || Auth::user()->is_admin) {
+            return view('comments.edit', ['comment' => $comment]);
+        }
+        else {
+            return back()->withErrors(['error' => 'You do not have permission to edit this.']);
+        }
     }
 
     /**
@@ -142,7 +149,21 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'text' => 'required|max:255'
+        ]);
+
+        $comment = Comment::findOrFail($id);
+        if($comment->user_id == Auth::id() || Auth::user()->is_admin) {
+            $comment->text = $validatedData['text'];
+            $comment->save();
+            session()->flash('message', 'Post edited');
+            return view("posts.show", ['post'=> Post::find($comment->commentable_id)]);
+        }
+        else {
+            return back()->withErrors(['error' => 'You do not have permission to edit this.']);
+        }
+
     }
 
     /**
